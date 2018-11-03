@@ -1,0 +1,2 @@
+# Squeak
+Scripts folder

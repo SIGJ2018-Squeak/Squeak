@@ -1,0 +1,2 @@
+# Squeak
+Sounds folder

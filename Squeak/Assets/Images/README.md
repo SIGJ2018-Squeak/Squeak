@@ -1,0 +1,2 @@
+# Squeak
+Images folder

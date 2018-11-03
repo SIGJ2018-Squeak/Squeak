@@ -1,0 +1,2 @@
+# Squeak
+Prefabs folder
