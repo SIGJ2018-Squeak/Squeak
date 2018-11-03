@@ -6,7 +6,9 @@ public class Powerup : MonoBehaviour {
     public float powerupCooldown = 1.0f;
     private bool powerupAvailable = true;
 
-    
+    public enum PowerUpType { ReverseGravity };
+
+    public PowerUpType type;
 
     private AudioSource sound;
 
@@ -19,9 +21,8 @@ public class Powerup : MonoBehaviour {
     {
         if (powerupAvailable)
         {
-            sound.Play();
-            powerupAvailable = false;
-            Invoke("ResetPowerup", powerupCooldown);
+           
+            PowerUp();
 
             Debug.Log("Picked Up " + gameObject.ToString());
         }
@@ -32,9 +33,7 @@ public class Powerup : MonoBehaviour {
         Debug.Log("Stay");
         if (powerupAvailable)
         {
-            sound.Play();
-            powerupAvailable = false;
-            Invoke("ResetPowerup", powerupCooldown);
+            PowerUp();
 
             Debug.Log("Stay Picked Up " + gameObject.ToString());
         }
@@ -43,6 +42,29 @@ public class Powerup : MonoBehaviour {
     private void ResetPowerup()
     {
         powerupAvailable = true;
+    }
+
+    private void PowerUp()
+    {
+        sound.Play();
+        powerupAvailable = false;
+        Invoke("ResetPowerup", powerupCooldown);
+
+        switch (type)
+        {
+            case PowerUpType.ReverseGravity:
+                {
+                    PlayerMovement player = GameObject.FindObjectOfType<PlayerMovement>();
+
+                    player.gravityReversed = !player.gravityReversed;
+                    
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
+        }
     }
 
 }
