@@ -21,9 +21,7 @@ public class Powerup : MonoBehaviour {
     {
         if (powerupAvailable)
         {
-            sound.Play();
-            powerupAvailable = false;
-            Invoke("ResetPowerup", powerupCooldown);
+           
             PowerUp();
 
             Debug.Log("Picked Up " + gameObject.ToString());
@@ -35,9 +33,7 @@ public class Powerup : MonoBehaviour {
         Debug.Log("Stay");
         if (powerupAvailable)
         {
-            sound.Play();
-            powerupAvailable = false;
-            Invoke("ResetPowerup", powerupCooldown);
+            PowerUp();
 
             Debug.Log("Stay Picked Up " + gameObject.ToString());
         }
@@ -50,6 +46,10 @@ public class Powerup : MonoBehaviour {
 
     private void PowerUp()
     {
+        sound.Play();
+        powerupAvailable = false;
+        Invoke("ResetPowerup", powerupCooldown);
+
         switch (type)
         {
             case PowerUpType.ReverseGravity:
