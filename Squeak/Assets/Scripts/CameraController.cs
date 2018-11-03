@@ -4,29 +4,43 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     public GameObject player;
+    public PlayerMovement playerMovement;
+
     public float followAhead;
     public float followAbove;
 
     public float smoothing;
+
+    public bool reverseVerticalFollow;
 
     private Vector3 _targetPosition;
 
     // Use this for initialization
     void Start()
     {
-
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.localScale.x > 0f)
+        float verticalFollowAhead;
+        if(playerMovement.gravityReversed)
         {
-            _targetPosition = new Vector3(player.transform.position.x + followAhead, player.transform.position.y + followAbove, -10f);
+            verticalFollowAhead = -followAbove;
         }
         else
         {
-            _targetPosition = new Vector3(player.transform.position.x - followAhead, player.transform.position.y + followAbove, -10f);
+            verticalFollowAhead = followAbove;
+        }
+
+        if (player.transform.localScale.x > 0f)
+        {
+            _targetPosition = new Vector3(player.transform.position.x + followAhead, player.transform.position.y + verticalFollowAhead, -10f);
+        }
+        else
+        {
+            _targetPosition = new Vector3(player.transform.position.x - followAhead, player.transform.position.y + verticalFollowAhead, -10f);
         }
 
         transform.position = Vector3.Lerp(transform.position, _targetPosition, smoothing * Time.deltaTime);

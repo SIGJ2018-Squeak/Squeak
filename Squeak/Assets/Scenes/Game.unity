@@ -330,11 +330,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4959523483863072, guid: 315aac72aa1ec4991bfd2eb1602e9351, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4959523483863072, guid: 315aac72aa1ec4991bfd2eb1602e9351, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 4959523483863072, guid: 315aac72aa1ec4991bfd2eb1602e9351, type: 2}
       propertyPath: m_LocalPosition.z
@@ -368,7 +368,22 @@ Prefab:
     - target: {fileID: 114952414254152994, guid: 315aac72aa1ec4991bfd2eb1602e9351,
         type: 2}
       propertyPath: movementSpeedUpRate
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114952414254152994, guid: 315aac72aa1ec4991bfd2eb1602e9351,
+        type: 2}
+      propertyPath: jumpSpeed
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 114952414254152994, guid: 315aac72aa1ec4991bfd2eb1602e9351,
+        type: 2}
+      propertyPath: movementSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114952414254152994, guid: 315aac72aa1ec4991bfd2eb1602e9351,
+        type: 2}
+      propertyPath: movementCoolDownRateGrounded
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 315aac72aa1ec4991bfd2eb1602e9351, type: 2}
@@ -927,17 +942,17 @@ Prefab:
     - target: {fileID: 114143312038788842, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}
       propertyPath: smoothing
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114143312038788842, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}
       propertyPath: followAbove
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114143312038788842, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}
       propertyPath: followAhead
-      value: 0
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 341a532e26d05ea49ac68b855427f733, type: 2}
