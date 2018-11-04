@@ -384,7 +384,9 @@ MonoBehaviour:
 
     D - Right
 
-    Space - Jump'
+    Space - Jump
+
+    R - Squeak!'
 --- !u!222 &1493713970
 CanvasRenderer:
   m_ObjectHideFlags: 0

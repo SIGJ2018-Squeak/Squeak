@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Help.unity
     guid: 6f1a48c17bd8c8a4db4a9a150d798468
   - enabled: 1
-    path: Assets/Scenes/Game.unity
-    guid: 3d90ac7f58301ce4f80dd45365840359
+    path: Assets/Scenes/Lab.unity
+    guid: 6480152c8aade784f8b010b7ba0af663
   - enabled: 1
     path: Assets/Scenes/End.unity
     guid: 59b4d214d3f632146bc942aa4cfcd81c
