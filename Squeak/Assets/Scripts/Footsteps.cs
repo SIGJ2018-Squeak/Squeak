@@ -9,7 +9,7 @@ public class Footsteps : MonoBehaviour {
     {
         if (footstepSFX.Count > 0)
         {
-            AudioSource.PlayClipAtPoint(footstepSFX[(int)Random.Range(0, footstepSFX.Count - 1)], transform.position);
+            AudioSource.PlayClipAtPoint(footstepSFX[(int)Random.Range(0, footstepSFX.Count - 1)], transform.position, Random.Range(0.5f,1f));
         }
     }
 }
