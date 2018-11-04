@@ -1491,7 +1491,7 @@ Prefab:
     - target: {fileID: 20238491198321748, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}
       propertyPath: field of view
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 20238491198321748, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}

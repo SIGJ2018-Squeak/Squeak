@@ -21,8 +21,10 @@ public class PlayerMovement : MonoBehaviour
 
     public bool gravityReversed;
     public float gravity;
-    public float restingGravityVelocity;
     public float terminalVelocity;
+
+    private bool _jumping;
+    private bool _falling;
 
     public AudioClip squeak;
     public AudioClip sonicSqueak;
@@ -30,11 +32,15 @@ public class PlayerMovement : MonoBehaviour
     private float _facingX;
     private float _facingY;
 
+    private Animator _animator;
+
     // Use this for initialization
     void Start()
     {
         _facingX = 1f;
         _facingY = -1f;
+
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -72,6 +78,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
+        _jumping = false;
+        _falling = false;
+
         // horizontal
         if (Input.GetAxis("Horizontal") > 0f)
         {
@@ -102,6 +111,8 @@ public class PlayerMovement : MonoBehaviour
         // vertical
         if (_onGround && Input.GetButtonDown("Jump"))
         {
+            _jumping = true;
+
             if(gravityReversed)
             {
                 _verticalVelocity = -jumpSpeed;
@@ -116,10 +127,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if(_onGround)
             {
-                _verticalVelocity = restingGravityVelocity;
+                _verticalVelocity = 0f;
             }
             else
             {
+                _falling = true;
                 _verticalVelocity = Mathf.Min(_verticalVelocity += gravity, terminalVelocity);
             }
 
@@ -128,12 +140,13 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if(_onGround)
+            if (_onGround)
             {
-                _verticalVelocity = -restingGravityVelocity;
+                _verticalVelocity = 0f;
             }
-            else 
+            else
             {
+                _falling = true;
                 _verticalVelocity = Mathf.Max(_verticalVelocity -= gravity, -terminalVelocity);
             }
 
@@ -141,12 +154,18 @@ public class PlayerMovement : MonoBehaviour
             _facingY = 1f;
         }
 
+        _animator.SetFloat("PlayerXSpeed", Mathf.Abs(_horizontalVelocity));
+        _animator.SetBool("PlayerJumping", _jumping);
+        _animator.SetBool("PlayerFalling", _falling);
+
+
+        // _animator.SetBool("PlayerLaunched", !_onGround);
+
         // orient
         transform.localScale = new Vector3(_facingX, _facingY, 1f);
 
         // move
         transform.Translate(1f * Time.deltaTime * _horizontalVelocity, 1f * Time.deltaTime * _verticalVelocity, 0f);
-
     }
 
     public void SpeedBurst()
