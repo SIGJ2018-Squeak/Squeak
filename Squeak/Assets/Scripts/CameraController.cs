@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     public GameObject player;
+    private PlayerMovement playerMovement;
+
     public float followAhead;
     public float followAbove;
    
@@ -16,18 +18,29 @@ public class CameraController : MonoBehaviour {
     void Start()
     {
         zPosition = transform.position.z;
+        playerMovement = player.GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.localScale.x > 0f)
+        float verticalFollowAhead;
+        if (playerMovement.gravityReversed)
         {
-            _targetPosition = new Vector3(player.transform.position.x + followAhead, player.transform.position.y + followAbove, zPosition);
+            verticalFollowAhead = -followAbove;
         }
         else
         {
-            _targetPosition = new Vector3(player.transform.position.x - followAhead, player.transform.position.y + followAbove, zPosition);
+            verticalFollowAhead = followAbove;
+        }
+
+        if (player.transform.localScale.x > 0f)
+        {
+            _targetPosition = new Vector3(player.transform.position.x + followAhead, player.transform.position.y + verticalFollowAhead, zPosition);
+        }
+        else
+        {
+            _targetPosition = new Vector3(player.transform.position.x - followAhead, player.transform.position.y + verticalFollowAhead, zPosition);
         }
 
         transform.position = Vector3.Lerp(transform.position, _targetPosition, smoothing * Time.deltaTime);
