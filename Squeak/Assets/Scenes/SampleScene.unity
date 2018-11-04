@@ -1481,22 +1481,22 @@ Prefab:
     - target: {fileID: 114143312038788842, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}
       propertyPath: followAbove
-      value: 3.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114143312038788842, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}
       propertyPath: smoothing
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 20238491198321748, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}
       propertyPath: field of view
-      value: 28
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 20238491198321748, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}
       propertyPath: m_projectionMatrixMode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 20238491198321748, guid: 341a532e26d05ea49ac68b855427f733,
         type: 2}

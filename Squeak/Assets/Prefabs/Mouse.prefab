@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 61139208757331750}
   - component: {fileID: 114952414254152994}
   - component: {fileID: 50683593169518680}
+  - component: {fileID: 95165183351433210}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -65,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417713288625640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.5, y: 1.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4573476499857226}
@@ -117,6 +118,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.72}
   m_EdgeRadius: 0
+--- !u!95 &95165183351433210
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417713288625640}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e50c8c8de9d7c4ab99ae90b92c109086, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114952414254152994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,20 +147,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb0f8f2f164da486ca0edc9a53c57799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 8
+  movementSpeed: 9
+  movementSpeedUpRate: 4
+  movementCoolDownRateGrounded: 3.5
+  burstSpeed: 0
+  burstAvailable: 0
   jumpSpeed: 35
   isGround:
     serializedVersion: 2
     m_Bits: 1024
   groundCheckRadius: 0.1
   groundDetector: {fileID: 4573476499857226}
-  speedUpRate: 3
-  movementCoolDownRateGrounded: 3.5
-  movementCoolDownRateNotGrounded: 1.5
   gravityReversed: 1
   gravity: 3.5
-  restingGravity: 0.1
+  restingGravityVelocity: 0.1
   terminalVelocity: 8
+  squeak: {fileID: 0}
+  sonicSqueak: {fileID: 0}
 --- !u!212 &212317826461228126
 SpriteRenderer:
   m_ObjectHideFlags: 1
