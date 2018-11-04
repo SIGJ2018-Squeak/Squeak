@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 114952414254152994}
   - component: {fileID: 50683593169518680}
   - component: {fileID: 95165183351433210}
+  - component: {fileID: 114733101157517570}
+  - component: {fileID: 114911781773973988}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Untagged
@@ -217,6 +219,50 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114733101157517570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417713288625640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c3bf768658c954199fca223ef4b4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepSFX:
+  - {fileID: 8300000, guid: 87f18aea59a1c3245b64056723417e36, type: 3}
+  - {fileID: 8300000, guid: 575324d12fb18b24fa665fdc75b43df8, type: 3}
+  - {fileID: 8300000, guid: 8b6b680ba1e342b419e40a11a846ee03, type: 3}
+  - {fileID: 8300000, guid: 70b9fa0c482eff44baba019c0ff6433e, type: 3}
+  - {fileID: 8300000, guid: 7b278357817e1014098a53e49c2076a3, type: 3}
+  - {fileID: 8300000, guid: 161a3fc8c0fe6da4a998e427fd4ae552, type: 3}
+  - {fileID: 8300000, guid: 4ddad2f7bbfa5d6478a0ffe3184eaa55, type: 3}
+  - {fileID: 8300000, guid: ed9e384d244152042947f9a98dacfeb5, type: 3}
+  - {fileID: 8300000, guid: b02688d711fd01d4eafdfd4bd9944dc6, type: 3}
+  - {fileID: 8300000, guid: 8589c9f4ac44138429ef0286aae9cefd, type: 3}
+--- !u!114 &114911781773973988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417713288625640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062bbc19573834a40b05965dda4879a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  squeakSFX:
+  - {fileID: 8300000, guid: 89581d26f01182f489f6c5d960aa5de9, type: 3}
+  - {fileID: 8300000, guid: eceb3c5526ddd4a48a6d087eb61f9382, type: 3}
+  - {fileID: 8300000, guid: 4c7d8e1faa199e1419c09ce38b515ef7, type: 3}
+  - {fileID: 8300000, guid: a3df9914f3a3802499259fae12dcaadb, type: 3}
+  - {fileID: 8300000, guid: d7c0fb2ea530ba04cab0d9d465a2e002, type: 3}
+  - {fileID: 8300000, guid: 9eeaadbc7af65784392ff3b518f06796, type: 3}
+  - {fileID: 8300000, guid: 775a377747c9fb84e98e85be06b1f4d2, type: 3}
+  - {fileID: 8300000, guid: c7f221d11b3a3a54baf05df8c383664b, type: 3}
+  - {fileID: 8300000, guid: dc4b2ac7333bd2144acfa3e52db87ebb, type: 3}
+  - {fileID: 8300000, guid: dca20422d4b34d849ae74fd32f3180c5, type: 3}
 --- !u!114 &114952414254152994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,8 +289,8 @@ MonoBehaviour:
   gravityReversed: 1
   gravity: 4.2
   terminalVelocity: 8
-  squeak: {fileID: 0}
-  sonicSqueak: {fileID: 0}
+  squeak: {fileID: 8300000, guid: 624876612b0a6354fb78c0e0fad4d3ce, type: 3}
+  sonicSqueak: {fileID: 8300000, guid: c514101e6f8a4c84192fa281c49739c3, type: 3}
 --- !u!212 &212317826461228126
 SpriteRenderer:
   m_ObjectHideFlags: 1
