@@ -6,7 +6,7 @@ public class Powerup : MonoBehaviour {
     public float powerupCooldown = 1.0f;
     private bool powerupAvailable = true;
 
-    public enum PowerUpType { ReverseGravity };
+    public enum PowerUpType { ReverseGravity, SpeedBurst };
 
     public PowerUpType type;
 
@@ -58,6 +58,13 @@ public class Powerup : MonoBehaviour {
 
                     player.gravityReversed = !player.gravityReversed;
                     
+                    break;
+                }
+            case PowerUpType.SpeedBurst:
+                {
+                    PlayerMovement player = GameObject.FindObjectOfType<PlayerMovement>();
+
+                    player.burstAvailable = true;
                     break;
                 }
             default:

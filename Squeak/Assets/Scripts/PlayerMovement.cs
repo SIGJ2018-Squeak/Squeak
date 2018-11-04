@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeedUpRate;
     public float movementCoolDownRateGrounded;
     public float burstSpeed;
+    public bool burstAvailable = false;
     private float _horizontalVelocity;
 
     public float jumpSpeed;
@@ -22,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public float gravity;
     public float restingGravityVelocity;
     public float terminalVelocity;
+
+    public AudioClip squeak;
+    public AudioClip sonicSqueak;
 
     private float _facingX;
     private float _facingY;
@@ -40,7 +44,24 @@ public class PlayerMovement : MonoBehaviour
         Move();
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SpeedBurst();
+            if (burstAvailable)
+            {
+                burstAvailable = false;
+                if (sonicSqueak != null)
+                {
+                    AudioSource.PlayClipAtPoint(sonicSqueak, transform.position);
+                }
+                SpeedBurst();
+
+            }
+            else
+            {
+                if (squeak != null)
+                {
+                    AudioSource.PlayClipAtPoint(squeak, transform.position);
+                }
+            }
+           
         }
     }
 
