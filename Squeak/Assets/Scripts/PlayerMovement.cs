@@ -131,18 +131,18 @@ public class PlayerMovement : MonoBehaviour
     public void SpeedBurst()
     {
         Debug.Log("SpeedBurst");
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(_facingX, 0f), burstSpeed * Time.deltaTime * movementSpeed, isGround);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(-1f* _facingX, 0f), burstSpeed * Time.deltaTime * movementSpeed, isGround);
         
         if (hit.collider == null)
         {
 
-            transform.Translate(burstSpeed * Time.deltaTime * movementSpeed * _facingX, 0f, 0f);
+            transform.Translate(-1f* burstSpeed * Time.deltaTime * movementSpeed * _facingX, 0f, 0f);
         }
         else
         {
             float travelDistance;
             float colliderWidth = GetComponent<BoxCollider2D>().size.x;
-            if (_facingX > 0)
+            if (_facingX < 0)
             {
                 travelDistance = hit.point.x - (colliderWidth/2);
             }
