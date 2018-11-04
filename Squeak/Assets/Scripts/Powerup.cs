@@ -56,7 +56,8 @@ public class Powerup : MonoBehaviour {
                 {
                     PlayerMovement player = GameObject.FindObjectOfType<PlayerMovement>();
 
-                    player.gravityReversed = !player.gravityReversed;
+                    //player.gravityReversed = !player.gravityReversed;
+                    player.ReverseGravity();
                     
                     break;
                 }
