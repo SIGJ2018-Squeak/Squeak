@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float movementSpeed;
     public float movementSpeedUpRate;
     public float movementCoolDownRateGrounded;
+    public float burstSpeed;
     private float _horizontalVelocity;
 
     public float jumpSpeed;
@@ -37,6 +38,10 @@ public class PlayerMovement : MonoBehaviour
     {
         CollisionCheck();
         Move();
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SpeedBurst();
+        }
     }
 
     private void CollisionCheck()
@@ -120,5 +125,33 @@ public class PlayerMovement : MonoBehaviour
 
         // move
         transform.Translate(1f * Time.deltaTime * _horizontalVelocity, 1f * Time.deltaTime * _verticalVelocity, 0f);
+
+    }
+
+    public void SpeedBurst()
+    {
+        Debug.Log("SpeedBurst");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(_facingX, 0f), burstSpeed * Time.deltaTime * movementSpeed, isGround);
+        
+        if (hit.collider == null)
+        {
+
+            transform.Translate(burstSpeed * Time.deltaTime * movementSpeed * _facingX, 0f, 0f);
+        }
+        else
+        {
+            float travelDistance;
+            float colliderWidth = GetComponent<BoxCollider2D>().size.x;
+            if (_facingX > 0)
+            {
+                travelDistance = hit.point.x - (colliderWidth/2);
+            }
+            else
+            {
+                travelDistance = hit.point.x + (colliderWidth / 2);
+            }
+            
+            transform.position = new Vector3(travelDistance,transform.position.y,transform.position.z);
+        }
     }
 }
