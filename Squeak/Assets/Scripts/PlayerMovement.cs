@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _jumping;
     private bool _falling;
+    private bool _squeaking;
 
     public AudioClip squeak;
     public AudioClip sonicSqueak;
@@ -48,10 +49,14 @@ public class PlayerMovement : MonoBehaviour
     {
         CollisionCheck();
         Move();
+
+        _squeaking = false;
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (burstAvailable)
             {
+                _squeaking = true;
+
                 burstAvailable = false;
                 if (sonicSqueak != null)
                 {
@@ -67,8 +72,8 @@ public class PlayerMovement : MonoBehaviour
                     AudioSource.PlayClipAtPoint(squeak, transform.position);
                 }
             }
-           
         }
+        _animator.SetBool("PlayerSqueaking", _squeaking);
     }
 
     private void CollisionCheck()
@@ -158,9 +163,6 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetBool("PlayerJumping", _jumping);
         _animator.SetBool("PlayerFalling", _falling);
 
-
-        // _animator.SetBool("PlayerLaunched", !_onGround);
-
         // orient
         transform.localScale = new Vector3(_facingX, _facingY, 1f);
 
@@ -170,7 +172,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void SpeedBurst()
     {
-        Debug.Log("SpeedBurst");
+
+
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(-1f* _facingX, 0f), burstSpeed * Time.deltaTime * movementSpeed, isGround);
         
         if (hit.collider == null)
