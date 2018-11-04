@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask isGround;
     public float groundCheckRadius;
     public Transform groundDetector;
+    public Transform ceilingDetector;
     private bool _onGround;
 
     public bool gravityReversed;
@@ -39,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        _jumping = false;
+        _falling = false;
+        _squeaking = false;
+
         _facingX = 1f;
         _facingY = -1f;
 
@@ -49,8 +54,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CollisionCheck();
         Move();
+        CollisionCheck();
 
         _squeaking = false;
         if (Input.GetKeyDown(KeyCode.R))
@@ -91,14 +96,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void CollisionCheck()
     {
-        _onGround = Physics2D.OverlapCircle(groundDetector.position, groundCheckRadius, isGround);
+        if(_falling && !_jumping)
+        {
+            bool touchingGround = Physics2D.OverlapCircle(groundDetector.position, groundCheckRadius, isGround);
+            bool touchingCeiling = Physics2D.OverlapCircle(ceilingDetector.position, groundCheckRadius, isGround);
+
+            _onGround = touchingGround || touchingCeiling;
+        }
+        else
+        {
+            _onGround = Physics2D.OverlapCircle(groundDetector.position, groundCheckRadius, isGround);
+        }
     }
 
     private void Move()
     {
-        _jumping = false;
-        _falling = false;
-
         // horizontal
         if (Input.GetAxis("Horizontal") > 0f)
         {
@@ -145,31 +157,60 @@ public class PlayerMovement : MonoBehaviour
         {
             if(_onGround)
             {
+                _jumping = false;
+                _falling = false;
+
                 _verticalVelocity = 0f;
+
+                // upside down
+                _facingY = -1f;
             }
             else
             {
                 _falling = true;
+
+                // if mouse just falling must revese mouse
+                if (!_jumping)
+                {
+                    _facingY = 1f;
+                } else 
+                {
+                    // upside down
+                    _facingY = -1f;
+                }
+
                 _verticalVelocity = Mathf.Min(_verticalVelocity += gravity, terminalVelocity);
             }
-
-            // upside down
-            _facingY = -1f;
         }
         else
         {
             if (_onGround)
             {
+                _jumping = false;
+                _falling = false;
+
                 _verticalVelocity = 0f;
+
+                // rightside up
+                _facingY = 1f;
             }
             else
             {
                 _falling = true;
+
+                // if mouse just falling must revese mouse
+                if (!_jumping)
+                {
+                    _facingY = -1f;
+                }
+                else
+                {
+                    // rightside up
+                    _facingY = 1f;
+                }
+
                 _verticalVelocity = Mathf.Max(_verticalVelocity -= gravity, -terminalVelocity);
             }
-
-            // rightside up
-            _facingY = 1f;
         }
 
         _animator.SetFloat("PlayerXSpeed", Mathf.Abs(_horizontalVelocity));
@@ -178,8 +219,6 @@ public class PlayerMovement : MonoBehaviour
 
         // orient
         transform.localScale = new Vector3(_facingX, _facingY, 1f);
-        
-            
 
         // move
         transform.Translate(1f * Time.deltaTime * _horizontalVelocity, 1f * Time.deltaTime * _verticalVelocity, 0f);
@@ -187,13 +226,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void SpeedBurst()
     {
-
-
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(-1f* _facingX, 0f), burstSpeed * Time.deltaTime * movementSpeed, isGround);
         
         if (hit.collider == null)
         {
-
             transform.Translate(-1f* burstSpeed * Time.deltaTime * movementSpeed * _facingX, 0f, 0f);
         }
         else
@@ -211,5 +247,13 @@ public class PlayerMovement : MonoBehaviour
             
             transform.position = new Vector3(travelDistance,transform.position.y,transform.position.z);
         }
+    }
+
+    public void ReverseGravity()
+    {
+        _jumping = false;
+        _falling = true;
+
+        gravityReversed = !gravityReversed;
     }
 }
