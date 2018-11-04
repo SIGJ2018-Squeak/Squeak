@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float burstSpeed;
     public bool burstAvailable = false;
     private float _horizontalVelocity;
+    private ParticleSystem sonicParticle;
 
     public float jumpSpeed;
     private float _verticalVelocity;
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
         _facingY = -1f;
 
         _animator = GetComponent<Animator>();
+        sonicParticle = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -62,8 +64,19 @@ public class PlayerMovement : MonoBehaviour
                 {
                     AudioSource.PlayClipAtPoint(sonicSqueak, transform.position);
                 }
+                if (sonicParticle != null)
+                {
+                    if (_facingX > 0)
+                    {
+                        sonicParticle.gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    else
+                    {
+                        sonicParticle.gameObject.transform.localScale = new Vector3(-1f, -1f, -1f);
+                    }
+                    sonicParticle.Play();
+                }
                 SpeedBurst();
-
             }
             else
             {
@@ -165,6 +178,8 @@ public class PlayerMovement : MonoBehaviour
 
         // orient
         transform.localScale = new Vector3(_facingX, _facingY, 1f);
+        
+            
 
         // move
         transform.Translate(1f * Time.deltaTime * _horizontalVelocity, 1f * Time.deltaTime * _verticalVelocity, 0f);
