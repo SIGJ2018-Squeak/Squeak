@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 375077008}
   - component: {fileID: 375077010}
   - component: {fileID: 375077009}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1263,7 +1263,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4614013080471676, guid: 0582b9e589541354c8fc6471d3037acd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8.86
+      value: 9.46
       objectReference: {fileID: 0}
     - target: {fileID: 4614013080471676, guid: 0582b9e589541354c8fc6471d3037acd, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2625,11 +2625,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4488228219680556, guid: f65c2a0e54fb8c246b0f0cda2f4907fc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 38.71
+      value: 38.73
       objectReference: {fileID: 0}
     - target: {fileID: 4488228219680556, guid: f65c2a0e54fb8c246b0f0cda2f4907fc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.12
+      value: 3.89
       objectReference: {fileID: 0}
     - target: {fileID: 4488228219680556, guid: f65c2a0e54fb8c246b0f0cda2f4907fc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2657,7 +2657,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4488228219680556, guid: f65c2a0e54fb8c246b0f0cda2f4907fc, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.0008679994
+      value: 0.0019683072
       objectReference: {fileID: 0}
     - target: {fileID: 4224889069257640, guid: f65c2a0e54fb8c246b0f0cda2f4907fc, type: 2}
       propertyPath: m_LocalScale.x
@@ -2693,11 +2693,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4488228219680556, guid: f65c2a0e54fb8c246b0f0cda2f4907fc, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.36343
+      value: 0.8241272
       objectReference: {fileID: 0}
     - target: {fileID: 4488228219680556, guid: f65c2a0e54fb8c246b0f0cda2f4907fc, type: 2}
       propertyPath: m_LocalScale.y
-      value: 0.36343
+      value: 0.8241272
       objectReference: {fileID: 0}
     - target: {fileID: 4488228219680556, guid: f65c2a0e54fb8c246b0f0cda2f4907fc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
